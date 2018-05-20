@@ -15,28 +15,36 @@ GOTO :EOF
     if errorlevel 1 (
         call
     ) else (
+        echo "D7900 found"
         CALL :SUB_D7900 
+        echo "D7900 Done!"
         GOTO:EOF
     )
     echo %%i|find "Canmet" >nul
     if errorlevel 1 (
         call
     ) else (
+        echo "Canmet found"
         CALL :SUB_CANMET
+        echo "Canmet Done!"
         GOTO:EOF
     )
     echo %%i|find "Headspace" >nul
     if errorlevel 1 (
         CALL
     ) else (
+        echo "Headspace found"
         CALL :SUB_HEAD 
+        echo "Headspace Done!"
         GOTO:EOF
     )
     echo %%i|find "D5134" >nul
     if errorlevel 1 (
         CALL
     ) else (
+        echo "Philips found"
         CALL :SUB_PHIL
+        echo "Philips Done!"
         GOTO:EOF
     )
     echo %%i|find "RGA1" >nul
@@ -62,7 +70,7 @@ GOTO :EOF
 
 
 
-
+:: SUBROUTINES
 
 :SUB_D7900
   set "CC=ASTM D7900 SB Ratio Control Chart.xlsx"
@@ -75,7 +83,6 @@ GOTO :EOF
 
      rename "Copy of %CC%" "%CC%"
 
-     echo "Process Complete!"
 ) else (
      echo "Copy of %CC% Doesn't exists"
 )
@@ -93,7 +100,6 @@ GOTO :EOF
 
      rename "Copy of %CC%" "%CC%"
 
-     echo "Process Complete!"
 ) else (
      echo "Copy of %CC% Doesn't exists"
 )
@@ -111,7 +117,6 @@ GOTO :EOF
 
      rename "Copy of %CC%" "%CC%"
 
-     echo "Process Complete!"
 ) else (
      echo "Copy of %CC% Doesn't exists"
 )
