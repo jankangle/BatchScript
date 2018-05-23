@@ -7,8 +7,23 @@ SET path4=Z:\Quality Assurance\QC CONTROL CHARTS\GC Area\GC-FID Canmet Solvent i
 SET path5=Z:\Quality Assurance\QC CONTROL CHARTS\GC Area\GC Headspace
 SET path6=Z:\Quality Assurance\QC CONTROL CHARTS\GC Area\GC-FID Solvent D5134 Phillips
 
-echo (RGA1) (RGA2) (D7900) (Can)met (Head)space (Phil)lips
+SET /a "Good=0"
+
+echo Remote CC Changers 1.0
+echo Jonathan Kung
+echo May 22, 2018
+echo.
+
+:while1
+if %Good% == 0 (
+echo Type whats in the brackets to select test. It is not case sensitive
+echo. 
+echo "(RGA1) (RGA2) (D7900) (Can)met (Head)space (Phil)lips"
+echo.
+
 set /P id=Which test?:
+
+)
 
 if /I %id% == RGA1 (
    cd /d %path1%
@@ -47,6 +62,9 @@ if /I %id% == Phil (
    GOTO :EOF
 )
 
+echo.
+echo That is not a recognized code. Please try again
+goto :while1
 GOTO :EOF
 
 :: SUBROUTINES
